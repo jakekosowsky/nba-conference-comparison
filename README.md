@@ -8,11 +8,8 @@ The analysis covers the 2005–2020 regular seasons, combining team standings, h
 
 - Western Conference teams won **55.7%** of interconference games.
 - The West had a winning interconference record in **15 of 16 seasons**.
-- The largest single-season gap occurred in 2013, when the West went **284–166** against the East.
 - Western playoff teams won 57% of their games against Eastern playoff teams; Western non-playoff teams won 55% against their Eastern counterparts.
 - At the same .500 winning percentage, the playoff model estimated a much lower qualification probability for a Western team than an Eastern team.
-
-![Interconference comparison](results/figures/interconference_playoff_comparison.svg)
 
 ## Schedule strength and the Thunder
 
@@ -47,3 +44,9 @@ notebooks/
 ## Tools
 
 R · tidyverse · ggplot2 · logistic regression · permutation testing · Plotly
+
+## Playoff-status comparison
+
+The overall interconference advantage also appears when teams are compared by playoff status, rather than allowing the strongest teams in one conference to dominate the comparison.
+
+![Interconference comparison](results/figures/interconference_playoff_comparison.svg)
