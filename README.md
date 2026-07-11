@@ -1,27 +1,49 @@
-# NBA Conference Comparison
+# Is the Western Conference Actually Better?
 
-A reusable NBA data pipeline for comparing team performance across the Eastern and Western Conferences. The project retrieves schedules and team statistics, transforms home/road results into consistent game-level features, and prepares a panel suitable for conference-level analysis.
+The conventional NBA view is that the Western Conference is stronger than the Eastern Conference. This project asks whether that reputation can be demonstrated with data, and whether the observed gap is too large to plausibly attribute to random conference assignment.
 
-## Analysis goals
+The analysis covers the 2005–2020 regular seasons, combining team standings, head-to-head records, playoff qualification, point margin, and opponent strength.
 
-- Compare conference strength across a season.
-- Separate home-court effects from overall performance.
-- Track cumulative win percentage and point differential.
-- Create a reproducible dataset for team and conference visualizations.
+## Findings
+
+- Western Conference teams won **55.7%** of interconference games.
+- The West had a winning interconference record in **15 of 16 seasons**.
+- The largest single-season gap occurred in 2013, when the West went **284–166** against the East.
+- Western playoff teams won 57% of their games against Eastern playoff teams; Western non-playoff teams won 55% against their Eastern counterparts.
+- At the same .500 winning percentage, the playoff model estimated a much lower qualification probability for a Western team than an Eastern team.
+
+![Interconference comparison](results/figures/interconference_playoff_comparison.svg)
+
+## Schedule strength and the Thunder
+
+The project also measures schedule difficulty using opponents' average point margins. A dedicated 2016 Oklahoma City Thunder analysis isolates the team's opponent profile and connects the single-team view to the broader conference comparison.
+
+![Schedule strength versus performance](results/figures/schedule_strength_vs_performance.svg)
+
+## Simulation model
+
+A 10,000-run permutation model randomly reassigned 15 teams to each conference within every season, refit the playoff model, and recorded the conference coefficient. None of the simulated coefficients was as extreme as the observed value—an empirical probability below 0.01%. The gap is therefore extremely unlikely under random conference assignment and is statistically distinguishable at conventional significance levels.
+
+![Permutation test](results/figures/conference_permutation_test.svg)
 
 ## Repository structure
 
-- `notebooks/conference_comparison.ipynb` — NBA API collection and feature engineering
-- `data/` — optional local cache; generated files are not committed
+```text
+R/
+  01_data_preparation.R
+  02_conference_strength.R
+  03_schedule_strength.R
+  04_playoff_threshold_model.R
+  05_permutation_test.R
+analysis/
+  thunder_2016_analysis.R
+data/
+  combined_standings.csv
+  combined_team_vs_team_records.csv
+results/figures/
+notebooks/
+```
 
 ## Tools
 
-Python, pandas, NumPy, `nba_api`, Requests, and Jupyter.
-
-## Running the notebook
-
-Install the dependencies, open the notebook, select the season, and run the collection cells. NBA endpoints may rate-limit automated requests, so the pipeline includes retry behavior and should be run conservatively.
-
-## Status
-
-The repository contains the reusable collection and transformation foundation. The next release will add final conference summary tables, uncertainty-aware comparisons, and polished figures.
+R · tidyverse · ggplot2 · logistic regression · permutation testing · Plotly
