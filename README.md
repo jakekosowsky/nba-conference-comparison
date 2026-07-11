@@ -11,9 +11,9 @@ The analysis covers the 2005–2020 regular seasons, combining team standings, h
 - Western playoff teams won 57% of their games against Eastern playoff teams; Western non-playoff teams won 55% against their Eastern counterparts.
 - At the same .500 winning percentage, the playoff model estimated a much lower qualification probability for a Western team than an Eastern team.
 
-## Schedule strength and the Thunder
+## Schedule strength
 
-The project also measures schedule difficulty using opponents' average point margins. A dedicated 2016 Oklahoma City Thunder analysis isolates the team's opponent profile and connects the single-team view to the broader conference comparison.
+The project measures schedule difficulty using opponents' average point margins, then compares that difficulty with team performance. This provides another way to test conference strength: if one conference consistently faces stronger opponents, raw win totals alone can understate the quality of its teams.
 
 ![Schedule strength versus performance](results/figures/schedule_strength_vs_performance.svg)
 
@@ -32,8 +32,6 @@ R/
   03_schedule_strength.R
   04_playoff_threshold_model.R
   05_permutation_test.R
-analysis/
-  thunder_2016_analysis.R
 data/
   combined_standings.csv
   combined_team_vs_team_records.csv
